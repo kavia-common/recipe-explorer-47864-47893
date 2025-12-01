@@ -1,0 +1,12 @@
+:root {
+  --ocean-primary: #2563EB;
+  --ocean-secondary: #F59E0B;
+  --ocean-error: #EF4444;
+  --ocean-bg: #f9fafb;
+  --ocean-surface: #ffffff;
+  --ocean-text: #111827;
+  --ocean-muted: #6b7280;
+  --ocean-card-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+  --ocean-radius: 14px;
+  --ocean-radius-sm: 10px;
+}

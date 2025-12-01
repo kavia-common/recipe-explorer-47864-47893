@@ -1,104 +1,140 @@
-/* CSS Variables for Theme Management */
-:root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
-}
+/* Ocean Professional layout and components */
 
 [data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+  --ocean-bg: #0b1220;
+  --ocean-surface: #111827;
+  --ocean-text: #e5e7eb;
+  --ocean-muted: #9ca3af;
+  --ocean-card-shadow: 0 10px 28px rgba(0,0,0,0.35);
 }
 
-.App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
+.app-shell {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.content-area {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 1rem auto 2rem;
+  padding: 0 1rem;
+}
+
+.sidebar {
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  background: var(--ocean-surface);
+  border-radius: var(--ocean-radius);
+  box-shadow: var(--ocean-card-shadow);
+  border: 1px solid rgba(37, 99, 235, 0.08);
+  padding: 1rem;
+}
+
+.main {
+  min-width: 0;
+}
+
+.footer {
+  border-top: 1px solid rgba(37,99,235,0.12);
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(229,231,235,0.24), rgba(255,255,255,0.66));
+}
+
+[data-theme="dark"] .footer {
+  background: linear-gradient(180deg, rgba(17,24,39,0.7), rgba(17,24,39,0.9));
+  border-color: rgba(59,130,246,0.2);
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.9rem 1rem;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  gap: .5rem;
+  color: var(--ocean-muted);
+  font-size: 0.95rem;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.footer-inner .dot {
+  opacity: .5;
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
+/* Utilities */
+.input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  border-radius: 12px;
+  outline: none;
+  transition: box-shadow .2s ease, border-color .2s ease, background .2s;
+  background: var(--ocean-surface);
+  color: var(--ocean-text);
+}
+
+.input:focus {
+  border-color: rgba(37,99,235,0.4);
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .65rem .9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(17,24,39,0.12);
+  background: white;
+  color: #111827;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(17,24,39,.1);
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.btn-primary {
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: .4rem .7rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  background: rgba(37,99,235,0.08);
+  color: #1D4ED8;
+  border: 1px solid rgba(37,99,235,0.12);
+}
+
+.card {
+  background: var(--ocean-surface);
+  border-radius: var(--ocean-radius);
+  box-shadow: var(--ocean-card-shadow);
+  border: 1px solid rgba(37,99,235,0.08);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .content-area {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+  .sidebar {
+    position: relative;
   }
 }

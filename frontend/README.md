@@ -1,82 +1,71 @@
-# Lightweight React Template for KAVIA
+# Recipe Explorer Frontend
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A modern React app to browse, search, and view recipes. Styled with the Ocean Professional theme (blue primary with amber accents), responsive layout, and graceful API fallback to mock data.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Ocean Professional theme with subtle gradients, rounded corners, and soft shadows
+- Header with search and theme toggle (light/dark)
+- Sidebar with category filters
+- Recipe list view with modern cards
+- Recipe detail view with ingredients and steps
+- Basic router with routes: `/recipes`, `/recipes/:id`
+- Environment-driven API base URL with mock fallback if not configured
 
-## Getting Started
+## Quick Start
 
-In the project directory, you can run:
+1. Install dependencies:
+   - npm install
 
-### `npm start`
+2. Configure environment (optional for live API):
+   - Copy `.env.example` to `.env` and set `REACT_APP_API_BASE` or `REACT_APP_BACKEND_URL`.
+   - If not set, the app uses mock data by default.
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. Run:
+   - npm start
+   - Open http://localhost:3000
 
-### `npm test`
+## Environment Variables
 
-Launches the test runner in interactive watch mode.
+See `.env.example` in this folder. Key entries:
+- REACT_APP_API_BASE or REACT_APP_BACKEND_URL: Base URL for the backend API (e.g., https://api.example.com)
+- Other optional settings (logging, feature flags, etc.) are provided for convenience.
 
-### `npm run build`
+When neither `REACT_APP_API_BASE` nor `REACT_APP_BACKEND_URL` is set, the app displays “Mock mode” in the header and serves a small curated dataset from the browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project Structure
 
-## Customization
+- src/
+  - App.js: App shell with routing
+  - styles/theme.css: Theme variables
+  - components/: Header, Sidebar, RecipeCard
+  - pages/: RecipeList, RecipeDetail
+  - context/RecipesContext.js: Global state for search and category
+  - services/api.js: API client with mock fallback
 
-### Colors
+## Styling
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+The app follows the Ocean Professional style guide:
+- Primary: #2563EB
+- Secondary (accent): #F59E0B
+- Background: #f9fafb
+- Surface: #ffffff
+- Text: #111827
 
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
+Rounded corners and shadows are used across surfaces, with soft transitions and gradient touches in headers and badges.
 
-### Components
+## Switching to Live API
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+1. Set `REACT_APP_API_BASE` or `REACT_APP_BACKEND_URL` in `.env`.
+2. Restart the dev server if it’s running.
+3. The app will automatically switch from mock data to live API calls.
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+## Testing
 
-## Learn More
+- npm test
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Build
 
-### Code Splitting
+- npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is based on a lightweight React template and uses only React and minimal CSS for a fast, clean experience.
